@@ -1,0 +1,15 @@
+[project]
+name = "SSOGenerator"
+version = "0.0.1"
+description = "Test repository for 2D (or maybe 3D - we'll see) modelling a Solar System and it's objects."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["astropy","numpy","pandas","skyfield"]
+authors = [
+    {name = "Agnieszka Gurgul", email = "agn.gurgul@umk.pl"},
+    {name = "Iulia Emilia Brumboiu", email = "iubr@umk.pl"},
+]
+
+[build-system]
+requires = ["setuptools >= 77.0.3","astropy >= 7.1"]
+build-backend = "setuptools.build_meta"
