@@ -3,6 +3,8 @@ class Sun:
         """
         Instantiates the Sun class.
 
+        :param name:
+            The star's (Sun) name.
         :param mass:
             The mass of the Sun in kg (or Solar Masses).
         :param radius:
@@ -11,7 +13,8 @@ class Sun:
             The Sun's luminosity in ??.
         """
 
-        self. mass = mass
+        self.name = name
+        self.mass = mass
         self.radius = radius
         self.luminosity = luminosity
 
@@ -19,11 +22,13 @@ class Sun:
         """
         Print information about a Sun object.
         """
+        text = ""
         if self.name is not None:
-            print("Star's name: %s" % name)
+            text += "Star's name: %s\n" % self.name
         if self.mass is not None:
-            print("Star's mass: %.2f Mo" % mass)
+            text += "Star's mass: %.2f Mo\n" % self.mass
         if self.radius is not None:
-            print("Star's radius: %.2f AU" % radius)
+            text += "Star's radius: %.2f AU\n" % self.radius
         if self.name is not None:
-            print("Star's luminosity: %.2f" % luminosity)
+            text += "Star's luminosity: %.2f \n" % self.luminosity
+        return text
