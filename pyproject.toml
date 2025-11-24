@@ -1,7 +1,7 @@
 [project]
 name = "SSOGenerator"
 version = "0.0.1"
-description = "Test repository for 2D (or maybe 3D - we'll see) modelling a Solar System and it's objects."
+description = "Project repository for 2D (or 3D) modelling of a satellites orbiting Earth."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["astropy","numpy","pandas","skyfield"]
