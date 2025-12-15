@@ -1,6 +1,6 @@
 class Satellite:
 
-    def __init__(self, tle0=None, tle1=None, tle2=None):
+    def __init__(self, name=None, tle0=None, tle1=None, tle2=None):
         """
         Instantiates the Satellite class.
 

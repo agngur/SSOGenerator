@@ -151,7 +151,7 @@ class TLE:
 
 
 def get_latest_tle(norad_id):
-    # do: download latest TLE from Celestrak
+    # do: download latest TLE from Celestrak/SpaceTrack/whatever
     pass
 
 
