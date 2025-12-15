@@ -1,0 +1,35 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 98eb00c7-6c2a-40ae-ba40-f5e1d553fdd4
+  title: Satellite System Object generator
+  description: Test description because why not
+  keywords: 
+    - satellites
+    - orbital mechanics
+  authors:
+    - name: Agnieszka Gurgul
+      affiliation:
+        - id: UMK
+        - institution: Nicolaus Copernicus University in Torun
+      email: agn.gurgul@umk.pl
+      orcid: 0000-0000-0000-0000
+
+  github: https://github.com/agngur/SSOGenerator
+  copyright: "2025"
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+  toc:
+    - file: install.md
+    - file: ../changelog.md
+    - file: ../readme.md
+    - file: ../tests/test_notebook.ipynb
+  bibliography:
+    - references.bib
+
+site:
+  template: book-theme
+  title: Jupyter-Book docs by MyST
+  options:
+     favicon: ai_iaumk.png
+     logo: ai_iaumk.png
+     logo_text: JB-docs for SSOgenerator

@@ -1,2 +1,2 @@
 # SSOGenerator
-Python classes - test package for Solar System (Objects) Generator
+Python classes - test package for Satellites System (Objects) Generator

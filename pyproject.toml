@@ -6,10 +6,24 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["astropy","numpy","pandas","skyfield"]
 authors = [
-    {name = "Agnieszka Gurgul", email = "agn.gurgul@umk.pl"},
-    {name = "Iulia Emilia Brumboiu", email = "iubr@umk.pl"},
+    {name = "Agnieszka Gurgul", email = "agn.gurgul@umk.pl"}
 ]
 
 [build-system]
-requires = ["setuptools >= 77.0.3","astropy >= 7.1"]
+requires = [
+    "setuptools >= 77.0.3",
+    "cython"
+    ]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+ext-modules = [
+    {
+    name = "ssogenerator.utils.cchecksum", 
+    sources = [
+        "ssogenerator/utils/cchecksum_wrapper.pyx", 
+        "ssogenerator/utils/cchecksum.cpp"
+        ], 
+    language = "c++"
+    }
+]
