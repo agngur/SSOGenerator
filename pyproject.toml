@@ -18,13 +18,4 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["ssogenerator", "ssogenerator.utils"]
-
-[tool.setuptools.ext-modules]
-[[tool.setuptools.ext-modules]]
-name = "ssogenerator.utils.cchecksum",
-sources = [
-    "ssogenerator/utils/cchecksum_wrapper.pyx",
-    "ssogenerator/utils/cchecksum.cpp"],
-language = "c++",
-include-dirs = ["ssogenerator/utils"]
+ext-modules = [ { name = "ssogenerator.utils.cchecksum", sources = ["ssogenerator/utils/cchecksum_wrapper.pyx", "ssogenerator/utils/cchecksum.cpp"], language = "c++" } ]
