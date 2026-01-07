@@ -1,5 +1,11 @@
 # Installation instructions
 
+# To be included in the Documentation:
+## Getting started...
+## How to install
+## What are features of your software
+## Which documentation tools you are using... --> MYST
+
 We recommend that you install the satellite system objects (SSO) generator in a conda environment.
 
 If you don't have conda already, you can find it here: [Miniconda](https://www.anaconda.com/download/success) 

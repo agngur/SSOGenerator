@@ -12,23 +12,19 @@ authors = [
 [build-system]
 requires = [
     "setuptools >= 77.0.3",
-    "cython"
+    "cython >= 3.0.0",
+...."numpy"
     ]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-ext-modules = [{
-name = "ssogenerator.utils.cchecksum",
-sources = ["ssogenerator/utils/cchecksum_wrapper.pyx", "ssogenerator/utils/cchecksum.cpp"],
-language = "c++"
-}]
+packages = ["ssogenerator", "ssogenerator.utils"]
 
-#ext-modules = [{
-#    name = "ssogenerator.utils.cchecksum", 
-#    sources = [
-#        "ssogenerator/utils/cchecksum_wrapper.pyx", 
-#        "ssogenerator/utils/cchecksum.cpp"
-#        ], 
-#    language = "c++"
-#    }
-#]
+[tool.setuptools.ext-modules]
+[[tool.setuptools.ext-modules]]
+name = "ssogenerator.utils.cchecksum",
+sources = [
+    "ssogenerator/utils/cchecksum_wrapper.pyx",
+    "ssogenerator/utils/cchecksum.cpp"],
+language = "c++",
+include-dirs = ["ssogenerator/utils"]

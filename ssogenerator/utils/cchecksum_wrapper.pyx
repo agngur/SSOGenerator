@@ -2,14 +2,17 @@
 
 from libcpp.string cimport string
 cdef extern from "cchecksum.h":
-    #double trapezoid(const vector[double]& x, const vector[double]& y)
-    int tle_line_checksum(const std::string &line)
+    int tle_line_checksum(const string& line)
 
 # Python wrapper
 def tle_line_checksum(str line):
     cdef string cline
     cline = line
     return tle_line_checksum(cline)
+
+# AI Claude suggestion:
+#def compute_checksum(str line):
+#    return tle_line_checksum(line.encode('utf-8'))
 
 # Example from classes
 #def ctrapezoid(list x, list y):
