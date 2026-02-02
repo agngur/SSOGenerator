@@ -16,7 +16,9 @@ class Earth:
         """
         Print information about an Earth object.
         """
+        txt = ""
         if self.name is not None:
-            print("Central object's name: %s" % name)
+            txt += "Central object's name: %s" % self.name
         if self.radius is not None:
-            print("Central object's radius: %.2f km" % radius)
+            txt += " and radius: %.2f km" % self.radius
+        return txt

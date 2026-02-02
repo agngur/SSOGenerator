@@ -4,19 +4,19 @@
 {
     "distutils": {
         "depends": [
-            "ssogenerator\\utils\\cchecksum.h"
+            "ssogenerator\\utils\\ctle_checksum.h"
         ],
         "include_dirs": [
             "ssogenerator/utils"
         ],
         "language": "c++",
-        "name": "ssogenerator.utils.cchecksum",
+        "name": "ssogenerator.utils.ctle_checksum",
         "sources": [
-            "ssogenerator/utils/cchecksum_wrapper.pyx",
-            "ssogenerator/utils/cchecksum.cpp"
+            "ssogenerator/utils/ctle_checksum_wrapper.pyx",
+            "ssogenerator/utils/ctle_checksum.cpp"
         ]
     },
-    "module_name": "ssogenerator.utils.cchecksum"
+    "module_name": "ssogenerator.utils.ctle_checksum"
 }
 END: Cython Metadata */
 
@@ -1146,17 +1146,10 @@ static int __Pyx_init_co_variables(void) {
     #define __PYX_EXTERN_C extern "C++"
 #endif
 
-#define __PYX_HAVE__ssogenerator__utils__cchecksum
-#define __PYX_HAVE_API__ssogenerator__utils__cchecksum
+#define __PYX_HAVE__ssogenerator__utils__ctle_checksum
+#define __PYX_HAVE_API__ssogenerator__utils__ctle_checksum
 /* Early includes */
-#include <string.h>
-#include <string_view>
-#include "ios"
-#include "new"
-#include "stdexcept"
-#include "typeinfo"
-#include <string>
-#include "cchecksum.h"
+#include "ctle_checksum.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -1364,8 +1357,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "ssogenerator/utils/cchecksum_wrapper.pyx",
-  "<stringsource>",
+  "ssogenerator/utils/ctle_checksum_wrapper.pyx",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -1826,21 +1818,8 @@ static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *nam
     ((likely(__Pyx_IS_TYPE(obj, type) | (none_allowed && (obj == Py_None)))) ? 1 :\
         __Pyx__ArgTypeTest(obj, type, name, exact))
 
-/* MoveIfSupported.proto */
-#if CYTHON_USE_CPP_STD_MOVE
-  #include <utility>
-  #define __PYX_STD_MOVE_IF_SUPPORTED(x) std::move(x)
-#else
-  #define __PYX_STD_MOVE_IF_SUPPORTED(x) x
-#endif
-
-/* PyErrExceptionMatches.proto (used by PyObjectGetAttrStrNoError) */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
-#else
-#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
-#endif
+/* PyValueError_Check.proto */
+#define __Pyx_PyExc_ValueError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_ValueError)
 
 /* PyThreadStateGet.proto (used by PyErrFetchRestore) */
 #if CYTHON_FAST_THREAD_STATE
@@ -1860,7 +1839,7 @@ static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tsta
 #define __Pyx_PyErr_CurrentExceptionType()  PyErr_Occurred()
 #endif
 
-/* PyErrFetchRestore.proto (used by PyObjectGetAttrStrNoError) */
+/* PyErrFetchRestore.proto (used by RaiseException) */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyErr_Clear() __Pyx_ErrRestore(NULL, NULL, NULL)
 #define __Pyx_ErrRestoreWithState(type, value, tb)  __Pyx_ErrRestoreInState(PyThreadState_GET(), type, value, tb)
@@ -1885,58 +1864,11 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 #define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
 #endif
 
-/* PyObjectGetAttrStrNoError.proto (used by GetBuiltinName) */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
+/* RaiseException.export */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
-/* GetBuiltinName.proto (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name);
-
-/* PyDictVersioning.proto (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
-#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
-    (version_var) = __PYX_GET_DICT_VERSION(dict);\
-    (cache_var) = (value);
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
-        (VAR) = __Pyx_XNewRef(__pyx_dict_cached_value);\
-    } else {\
-        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
-        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
-    }\
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
-#else
-#define __PYX_GET_DICT_VERSION(dict)  (0)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
-#endif
-
-/* GetModuleGlobalName.proto */
-#if CYTHON_USE_DICT_VERSIONS
-#define __Pyx_GetModuleGlobalName(var, name)  do {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_mstate_global->__pyx_d))) ?\
-        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
-        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
-    PY_UINT64_T __pyx_dict_version;\
-    PyObject *__pyx_dict_cached_value;\
-    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
-#else
-#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
-#endif
+/* pyint_simplify.proto */
+static CYTHON_INLINE int __Pyx_PyInt_FromNumber(PyObject **number_var, const char *argname, int accept_none);
 
 /* dict_setdefault.proto (used by FetchCommonType) */
 static CYTHON_INLINE PyObject *__Pyx_PyDict_SetDefault(PyObject *d, PyObject *key, PyObject *default_value);
@@ -2083,6 +2015,43 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml,
                                       PyObject *module, PyObject *globals,
                                       PyObject* code);
 
+/* PyDictVersioning.proto (used by CLineInTraceback) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
+#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
+    (version_var) = __PYX_GET_DICT_VERSION(dict);\
+    (cache_var) = (value);
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
+        (VAR) = __Pyx_XNewRef(__pyx_dict_cached_value);\
+    } else {\
+        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
+        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
+    }\
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+#else
+#define __PYX_GET_DICT_VERSION(dict)  (0)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
+#endif
+
+/* PyErrExceptionMatches.proto (used by PyObjectGetAttrStrNoError) */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
+#endif
+
+/* PyObjectGetAttrStrNoError.proto (used by CLineInTraceback) */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
+
 /* CLineInTraceback.proto (used by AddTraceback) */
 #if CYTHON_CLINE_IN_TRACEBACK && CYTHON_CLINE_IN_TRACEBACK_RUNTIME
 static int __Pyx_CLineForTraceback(PyThreadState *tstate, int c_line);
@@ -2116,66 +2085,7 @@ static void __pyx_insert_code_object(int code_line, __Pyx_CachedCodeObjectType* 
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
-/* CppExceptionConversion.proto */
-#ifndef __Pyx_CppExn2PyErr
-#include <new>
-#include <typeinfo>
-#include <stdexcept>
-#include <ios>
-static void __Pyx_CppExn2PyErr() {
-  try {
-    if (PyErr_Occurred())
-      ; // let the latest Python exn pass through and ignore the current one
-    else
-      throw;
-  } catch (const std::bad_alloc& exn) {
-    PyErr_SetString(PyExc_MemoryError, exn.what());
-  } catch (const std::bad_cast& exn) {
-    PyErr_SetString(PyExc_TypeError, exn.what());
-  } catch (const std::bad_typeid& exn) {
-    PyErr_SetString(PyExc_TypeError, exn.what());
-  } catch (const std::domain_error& exn) {
-    PyErr_SetString(PyExc_ValueError, exn.what());
-  } catch (const std::invalid_argument& exn) {
-    PyErr_SetString(PyExc_ValueError, exn.what());
-  } catch (const std::ios_base::failure& exn) {
-    PyErr_SetString(PyExc_IOError, exn.what());
-  } catch (const std::out_of_range& exn) {
-    PyErr_SetString(PyExc_IndexError, exn.what());
-  } catch (const std::overflow_error& exn) {
-    PyErr_SetString(PyExc_OverflowError, exn.what());
-  } catch (const std::range_error& exn) {
-    PyErr_SetString(PyExc_ArithmeticError, exn.what());
-  } catch (const std::underflow_error& exn) {
-    PyErr_SetString(PyExc_ArithmeticError, exn.what());
-  } catch (const std::exception& exn) {
-    PyErr_SetString(PyExc_RuntimeError, exn.what());
-  }
-  catch (...)
-  {
-    PyErr_SetString(PyExc_RuntimeError, "Unknown exception");
-  }
-}
-#endif
-
-/* FormatTypeName.proto */
-#if CYTHON_COMPILING_IN_LIMITED_API
-typedef PyObject *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%U"
-#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
-#else
-static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
-#endif
-#else  // !LIMITED_API
-typedef const char *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%.200s"
-#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
-#define __Pyx_DECREF_TypeName(obj)
-#endif
-
-/* GCCDiagnostics.proto (used by CIntToPy) */
+/* GCCDiagnostics.proto */
 #if !defined(__INTEL_COMPILER) && defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
 #define __Pyx_HAS_GCC_DIAGNOSTIC
 #endif
@@ -2196,6 +2106,26 @@ static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, P
 #define __Pyx_MakeVectorcallBuilderKwds(n) __Pyx_PyDict_NewPresized(n)
 #define __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n) PyDict_SetItem(builder, key, value)
 #define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
+#endif
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
+
+/* FormatTypeName.proto */
+#if CYTHON_COMPILING_IN_LIMITED_API
+typedef PyObject *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%U"
+#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
+#else
+static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
+#endif
+#else  // !LIMITED_API
+typedef const char *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%.200s"
+#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
+#define __Pyx_DECREF_TypeName(obj)
 #endif
 
 /* CIntToPy.proto */
@@ -2294,29 +2224,19 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "libc.string" */
-
-/* Module declarations from "libcpp.string_view" */
-
-/* Module declarations from "libcpp.string" */
-
-/* Module declarations from "ssogenerator.utils.cchecksum" */
-static std::string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(PyObject *); /*proto*/
-static CYTHON_INLINE PyObject *__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(std::string const &); /*proto*/
-static CYTHON_INLINE PyObject *__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(std::string const &); /*proto*/
-static CYTHON_INLINE PyObject *__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(std::string const &); /*proto*/
-static CYTHON_INLINE PyObject *__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(std::string const &); /*proto*/
+/* Module declarations from "ssogenerator.utils.ctle_checksum" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "ssogenerator.utils.cchecksum"
-extern int __pyx_module_is_main_ssogenerator__utils__cchecksum;
-int __pyx_module_is_main_ssogenerator__utils__cchecksum = 0;
+#define __Pyx_MODULE_NAME "ssogenerator.utils.ctle_checksum"
+extern int __pyx_module_is_main_ssogenerator__utils__ctle_checksum;
+int __pyx_module_is_main_ssogenerator__utils__ctle_checksum = 0;
 
-/* Implementation of "ssogenerator.utils.cchecksum" */
+/* Implementation of "ssogenerator.utils.ctle_checksum" */
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_12ssogenerator_5utils_9cchecksum_tle_line_checksum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line); /* proto */
+static PyObject *__pyx_pf_12ssogenerator_5utils_13ctle_checksum_tleline_checksum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line); /* proto */
+static PyObject *__pyx_pf_12ssogenerator_5utils_13ctle_checksum_2tleline_checksum_valid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2340,8 +2260,8 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
-  PyObject *__pyx_codeobj_tab[1];
-  PyObject *__pyx_string_tab[24];
+  PyObject *__pyx_codeobj_tab[2];
+  PyObject *__pyx_string_tab[30];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
 PyTypeObject *__pyx_CommonTypesMetaclassType;
@@ -2384,28 +2304,34 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 /* #### Code section: constant_name_defines ### */
 #define __pyx_kp_u_ __pyx_string_tab[0]
 #define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[1]
-#define __pyx_kp_u_add_note __pyx_string_tab[2]
-#define __pyx_kp_u_ssogenerator_utils_cchecksum_wra __pyx_string_tab[3]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[4]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[5]
-#define __pyx_n_u_cline __pyx_string_tab[6]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[7]
-#define __pyx_n_u_func __pyx_string_tab[8]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[9]
-#define __pyx_n_u_items __pyx_string_tab[10]
-#define __pyx_n_u_line __pyx_string_tab[11]
-#define __pyx_n_u_main __pyx_string_tab[12]
-#define __pyx_n_u_module __pyx_string_tab[13]
-#define __pyx_n_u_name __pyx_string_tab[14]
-#define __pyx_n_u_pop __pyx_string_tab[15]
-#define __pyx_n_u_qualname __pyx_string_tab[16]
-#define __pyx_n_u_set_name __pyx_string_tab[17]
-#define __pyx_n_u_setdefault __pyx_string_tab[18]
-#define __pyx_n_u_ssogenerator_utils_cchecksum __pyx_string_tab[19]
-#define __pyx_n_u_test __pyx_string_tab[20]
-#define __pyx_n_u_tle_line_checksum __pyx_string_tab[21]
-#define __pyx_n_u_values __pyx_string_tab[22]
-#define __pyx_kp_b_iso88591_AQ __pyx_string_tab[23]
+#define __pyx_kp_u_TLE_line_must_be_at_least_69_cha __pyx_string_tab[2]
+#define __pyx_kp_u_add_note __pyx_string_tab[3]
+#define __pyx_kp_u_ssogenerator_utils_ctle_checksum_2 __pyx_string_tab[4]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[5]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[6]
+#define __pyx_n_u_bool __pyx_string_tab[7]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[8]
+#define __pyx_n_u_func __pyx_string_tab[9]
+#define __pyx_n_u_int __pyx_string_tab[10]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[11]
+#define __pyx_n_u_items __pyx_string_tab[12]
+#define __pyx_n_u_line __pyx_string_tab[13]
+#define __pyx_n_u_main __pyx_string_tab[14]
+#define __pyx_n_u_module __pyx_string_tab[15]
+#define __pyx_n_u_name __pyx_string_tab[16]
+#define __pyx_n_u_pop __pyx_string_tab[17]
+#define __pyx_n_u_qualname __pyx_string_tab[18]
+#define __pyx_n_u_return __pyx_string_tab[19]
+#define __pyx_n_u_set_name __pyx_string_tab[20]
+#define __pyx_n_u_setdefault __pyx_string_tab[21]
+#define __pyx_n_u_ssogenerator_utils_ctle_checksum __pyx_string_tab[22]
+#define __pyx_n_u_str __pyx_string_tab[23]
+#define __pyx_n_u_test __pyx_string_tab[24]
+#define __pyx_n_u_tleline_checksum __pyx_string_tab[25]
+#define __pyx_n_u_tleline_checksum_valid __pyx_string_tab[26]
+#define __pyx_n_u_values __pyx_string_tab[27]
+#define __pyx_kp_b_iso88591_81_s_6_1_j_q_G1A __pyx_string_tab[28]
+#define __pyx_kp_b_iso88591_s_6_1_q_4q_4waq __pyx_string_tab[29]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2420,8 +2346,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<24; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<30; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
 Py_CLEAR(clear_module_state->__pyx_CommonTypesMetaclassType);
@@ -2444,8 +2370,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_tuple);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
-  for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<24; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<30; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
 Py_VISIT(traverse_module_state->__pyx_CommonTypesMetaclassType);
@@ -2459,405 +2385,24 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "string.from_py":12
- *     cdef const char* __Pyx_PyObject_AsStringAndSize(object, Py_ssize_t*) except NULL
+/* "ssogenerator/utils/ctle_checksum_wrapper.pyx":7
+ *     bint tle_checksum_valid(const char *line)
  * 
- * @cname("__pyx_convert_string_from_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(object o) except *:
- *     cdef Py_ssize_t length = 0
-*/
-
-static std::string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(PyObject *__pyx_v_o) {
-  Py_ssize_t __pyx_v_length;
-  char const *__pyx_v_data;
-  std::string __pyx_r;
-  char const *__pyx_t_1;
-  std::string __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-
-  /* "string.from_py":14
- * @cname("__pyx_convert_string_from_py_6libcpp_6string_std__in_string")
- * cdef string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(object o) except *:
- *     cdef Py_ssize_t length = 0             # <<<<<<<<<<<<<<
- *     cdef const char* data = __Pyx_PyObject_AsStringAndSize(o, &length)
- *     return string(data, <size_t> length)
-*/
-  __pyx_v_length = 0;
-
-  /* "string.from_py":15
- * cdef string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(object o) except *:
- *     cdef Py_ssize_t length = 0
- *     cdef const char* data = __Pyx_PyObject_AsStringAndSize(o, &length)             # <<<<<<<<<<<<<<
- *     return string(data, <size_t> length)
- * 
-*/
-  __pyx_t_1 = __Pyx_PyObject_AsStringAndSize(__pyx_v_o, (&__pyx_v_length)); if (unlikely(__pyx_t_1 == ((void *)NULL))) __PYX_ERR(1, 15, __pyx_L1_error)
-  __pyx_v_data = __pyx_t_1;
-
-  /* "string.from_py":16
- *     cdef Py_ssize_t length = 0
- *     cdef const char* data = __Pyx_PyObject_AsStringAndSize(o, &length)
- *     return string(data, <size_t> length)             # <<<<<<<<<<<<<<
- * 
-*/
-  try {
-    __pyx_t_2 = std::string(__pyx_v_data, ((size_t)__pyx_v_length));
-  } catch(...) {
-    __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 16, __pyx_L1_error)
-  }
-  __pyx_r = __pyx_t_2;
-  goto __pyx_L0;
-
-  /* "string.from_py":12
- *     cdef const char* __Pyx_PyObject_AsStringAndSize(object, Py_ssize_t*) except NULL
- * 
- * @cname("__pyx_convert_string_from_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef string __pyx_convert_string_from_py_6libcpp_6string_std__in_string(object o) except *:
- *     cdef Py_ssize_t length = 0
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("string.from_py.__pyx_convert_string_from_py_6libcpp_6string_std__in_string", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_pretend_to_initialize(&__pyx_r);
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "string.to_py":31
- *     cdef object __Pyx_PyObject_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-static CYTHON_INLINE PyObject *__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(std::string const &__pyx_v_s) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string", 0);
-
-  /* "string.to_py":33
- * @cname("__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyObject_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  __pyx_t_1 = (__pyx_v_s.size() > ((size_t)PY_SSIZE_T_MAX));
-  if (unlikely(__pyx_t_1)) {
-
-    /* "string.to_py":34
- * cdef inline object __pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()             # <<<<<<<<<<<<<<
- *     return __Pyx_PyObject_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
- * cdef extern from *:
-*/
-    PyErr_NoMemory(); __PYX_ERR(1, 34, __pyx_L1_error)
-
-    /* "string.to_py":33
- * @cname("__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyObject_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  }
-
-  /* "string.to_py":35
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()
- *     return __Pyx_PyObject_FromStringAndSize(s.data(), <Py_ssize_t> s.size())             # <<<<<<<<<<<<<<
- * cdef extern from *:
- *     cdef object __Pyx_PyUnicode_FromStringAndSize(const char*, size_t)
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_FromStringAndSize(__pyx_v_s.data(), ((Py_ssize_t)__pyx_v_s.size())); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "string.to_py":31
- *     cdef object __Pyx_PyObject_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("string.to_py.__pyx_convert_PyObject_string_to_py_6libcpp_6string_std__in_string", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "string.to_py":39
- *     cdef object __Pyx_PyUnicode_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-static CYTHON_INLINE PyObject *__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(std::string const &__pyx_v_s) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string", 0);
-
-  /* "string.to_py":41
- * @cname("__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyUnicode_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  __pyx_t_1 = (__pyx_v_s.size() > ((size_t)PY_SSIZE_T_MAX));
-  if (unlikely(__pyx_t_1)) {
-
-    /* "string.to_py":42
- * cdef inline object __pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()             # <<<<<<<<<<<<<<
- *     return __Pyx_PyUnicode_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
- * cdef extern from *:
-*/
-    PyErr_NoMemory(); __PYX_ERR(1, 42, __pyx_L1_error)
-
-    /* "string.to_py":41
- * @cname("__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyUnicode_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  }
-
-  /* "string.to_py":43
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()
- *     return __Pyx_PyUnicode_FromStringAndSize(s.data(), <Py_ssize_t> s.size())             # <<<<<<<<<<<<<<
- * cdef extern from *:
- *     cdef object __Pyx_PyBytes_FromStringAndSize(const char*, size_t)
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyUnicode_FromStringAndSize(__pyx_v_s.data(), ((Py_ssize_t)__pyx_v_s.size())); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 43, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "string.to_py":39
- *     cdef object __Pyx_PyUnicode_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("string.to_py.__pyx_convert_PyUnicode_string_to_py_6libcpp_6string_std__in_string", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "string.to_py":47
- *     cdef object __Pyx_PyBytes_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-static CYTHON_INLINE PyObject *__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(std::string const &__pyx_v_s) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string", 0);
-
-  /* "string.to_py":49
- * @cname("__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyBytes_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  __pyx_t_1 = (__pyx_v_s.size() > ((size_t)PY_SSIZE_T_MAX));
-  if (unlikely(__pyx_t_1)) {
-
-    /* "string.to_py":50
- * cdef inline object __pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()             # <<<<<<<<<<<<<<
- *     return __Pyx_PyBytes_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
- * cdef extern from *:
-*/
-    PyErr_NoMemory(); __PYX_ERR(1, 50, __pyx_L1_error)
-
-    /* "string.to_py":49
- * @cname("__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyBytes_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  }
-
-  /* "string.to_py":51
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()
- *     return __Pyx_PyBytes_FromStringAndSize(s.data(), <Py_ssize_t> s.size())             # <<<<<<<<<<<<<<
- * cdef extern from *:
- *     cdef object __Pyx_PyByteArray_FromStringAndSize(const char*, size_t)
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(__pyx_v_s.data(), ((Py_ssize_t)__pyx_v_s.size())); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "string.to_py":47
- *     cdef object __Pyx_PyBytes_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("string.to_py.__pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "string.to_py":55
- *     cdef object __Pyx_PyByteArray_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-static CYTHON_INLINE PyObject *__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(std::string const &__pyx_v_s) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string", 0);
-
-  /* "string.to_py":57
- * @cname("__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyByteArray_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  __pyx_t_1 = (__pyx_v_s.size() > ((size_t)PY_SSIZE_T_MAX));
-  if (unlikely(__pyx_t_1)) {
-
-    /* "string.to_py":58
- * cdef inline object __pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()             # <<<<<<<<<<<<<<
- *     return __Pyx_PyByteArray_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-    PyErr_NoMemory(); __PYX_ERR(1, 58, __pyx_L1_error)
-
-    /* "string.to_py":57
- * @cname("__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string")
- * cdef inline object __pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:             # <<<<<<<<<<<<<<
- *         raise MemoryError()
- *     return __Pyx_PyByteArray_FromStringAndSize(s.data(), <Py_ssize_t> s.size())
-*/
-  }
-
-  /* "string.to_py":59
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
- *         raise MemoryError()
- *     return __Pyx_PyByteArray_FromStringAndSize(s.data(), <Py_ssize_t> s.size())             # <<<<<<<<<<<<<<
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyByteArray_FromStringAndSize(__pyx_v_s.data(), ((Py_ssize_t)__pyx_v_s.size())); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "string.to_py":55
- *     cdef object __Pyx_PyByteArray_FromStringAndSize(const char*, size_t)
- * 
- * @cname("__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string")             # <<<<<<<<<<<<<<
- * cdef inline object __pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string(const string& s):
- *     if s.size() > <size_t> PY_SSIZE_T_MAX:
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("string.to_py.__pyx_convert_PyByteArray_string_to_py_6libcpp_6string_std__in_string", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "ssogenerator/utils/cchecksum_wrapper.pyx":8
- * 
- * # Python wrapper
- * def tle_line_checksum(str line):             # <<<<<<<<<<<<<<
- * 
- *     # Convert Python str --> bytes as TLE lines are ASCII
+ * def tleline_checksum(line: str) -> int:             # <<<<<<<<<<<<<<
+ *     if len(line) < 69:
+ *         raise ValueError("TLE line must be at least 69 characters long")
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12ssogenerator_5utils_9cchecksum_1tle_line_checksum(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_12ssogenerator_5utils_13ctle_checksum_1tleline_checksum(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_12ssogenerator_5utils_9cchecksum_1tle_line_checksum = {"tle_line_checksum", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_12ssogenerator_5utils_9cchecksum_1tle_line_checksum, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_12ssogenerator_5utils_9cchecksum_1tle_line_checksum(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_12ssogenerator_5utils_13ctle_checksum_1tleline_checksum = {"tleline_checksum", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_12ssogenerator_5utils_13ctle_checksum_1tleline_checksum, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12ssogenerator_5utils_13ctle_checksum_1tleline_checksum(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2875,7 +2420,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("tle_line_checksum (wrapper)", 0);
+  __Pyx_RefNannySetupContext("tleline_checksum (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -2887,44 +2432,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 8, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 7, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 8, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 7, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "tle_line_checksum", 0) < (0)) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "tleline_checksum", 0) < (0)) __PYX_ERR(0, 7, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("tle_line_checksum", 1, 1, 1, i); __PYX_ERR(0, 8, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("tleline_checksum", 1, 1, 1, i); __PYX_ERR(0, 7, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 7, __pyx_L3_error)
     }
     __pyx_v_line = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("tle_line_checksum", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 8, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("tleline_checksum", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 7, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ssogenerator.utils.cchecksum.tle_line_checksum", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ssogenerator.utils.ctle_checksum.tleline_checksum", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line), (&PyUnicode_Type), 1, "line", 1))) __PYX_ERR(0, 8, __pyx_L1_error)
-  __pyx_r = __pyx_pf_12ssogenerator_5utils_9cchecksum_tle_line_checksum(__pyx_self, __pyx_v_line);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line), (&PyUnicode_Type), 0, "line", 2))) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_r = __pyx_pf_12ssogenerator_5utils_13ctle_checksum_tleline_checksum(__pyx_self, __pyx_v_line);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2943,84 +2488,274 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12ssogenerator_5utils_9cchecksum_tle_line_checksum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line) {
-  std::string __pyx_v_cline;
+static PyObject *__pyx_pf_12ssogenerator_5utils_13ctle_checksum_tleline_checksum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  std::string __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
+  size_t __pyx_t_5;
+  char const *__pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("tle_line_checksum", 0);
+  __Pyx_RefNannySetupContext("tleline_checksum", 0);
 
-  /* "ssogenerator/utils/cchecksum_wrapper.pyx":14
- *     #    line = line.encode("ascii")
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":8
  * 
- *     cdef string cline = line             # <<<<<<<<<<<<<<
- *     return tle_line_checksum(cline)
+ * def tleline_checksum(line: str) -> int:
+ *     if len(line) < 69:             # <<<<<<<<<<<<<<
+ *         raise ValueError("TLE line must be at least 69 characters long")
+ *     return tle_compute_checksum(line.encode("ascii"))
+*/
+  __pyx_t_1 = __Pyx_PyUnicode_GET_LENGTH(__pyx_v_line); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_t_1 < 69);
+  if (unlikely(__pyx_t_2)) {
+
+    /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":9
+ * def tleline_checksum(line: str) -> int:
+ *     if len(line) < 69:
+ *         raise ValueError("TLE line must be at least 69 characters long")             # <<<<<<<<<<<<<<
+ *     return tle_compute_checksum(line.encode("ascii"))
  * 
 */
-  __pyx_t_1 = __pyx_convert_string_from_py_6libcpp_6string_std__in_string(__pyx_v_line); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L1_error)
-  __pyx_v_cline = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 1;
+    {
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_TLE_line_must_be_at_least_69_cha};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 9, __pyx_L1_error)
 
-  /* "ssogenerator/utils/cchecksum_wrapper.pyx":15
+    /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":8
  * 
- *     cdef string cline = line
- *     return tle_line_checksum(cline)             # <<<<<<<<<<<<<<
+ * def tleline_checksum(line: str) -> int:
+ *     if len(line) < 69:             # <<<<<<<<<<<<<<
+ *         raise ValueError("TLE line must be at least 69 characters long")
+ *     return tle_compute_checksum(line.encode("ascii"))
+*/
+  }
+
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":10
+ *     if len(line) < 69:
+ *         raise ValueError("TLE line must be at least 69 characters long")
+ *     return tle_compute_checksum(line.encode("ascii"))             # <<<<<<<<<<<<<<
  * 
- * # AI Claude suggestion:
+ * def tleline_checksum_valid(line: str) -> bool:
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_tle_line_checksum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_3 = PyUnicode_AsASCIIString(__pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_6 = __Pyx_PyBytes_AsString(__pyx_t_3); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(tle_compute_checksum(__pyx_t_6)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __pyx_convert_PyBytes_string_to_py_6libcpp_6string_std__in_string(__pyx_v_cline); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-    assert(__pyx_t_3);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-    __Pyx_INCREF(__pyx_t_3);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-    __pyx_t_6 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-  }
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_PyInt_FromNumber(&__pyx_t_4, NULL, 0) < (0)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_4);
+  __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "ssogenerator/utils/cchecksum_wrapper.pyx":8
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":7
+ *     bint tle_checksum_valid(const char *line)
  * 
- * # Python wrapper
- * def tle_line_checksum(str line):             # <<<<<<<<<<<<<<
- * 
- *     # Convert Python str --> bytes as TLE lines are ASCII
+ * def tleline_checksum(line: str) -> int:             # <<<<<<<<<<<<<<
+ *     if len(line) < 69:
+ *         raise ValueError("TLE line must be at least 69 characters long")
 */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("ssogenerator.utils.cchecksum.tle_line_checksum", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ssogenerator.utils.ctle_checksum.tleline_checksum", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ssogenerator/utils/ctle_checksum_wrapper.pyx":12
+ *     return tle_compute_checksum(line.encode("ascii"))
+ * 
+ * def tleline_checksum_valid(line: str) -> bool:             # <<<<<<<<<<<<<<
+ *     if len(line) < 69:
+ *         return False
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_12ssogenerator_5utils_13ctle_checksum_3tleline_checksum_valid(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_12ssogenerator_5utils_13ctle_checksum_3tleline_checksum_valid = {"tleline_checksum_valid", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_12ssogenerator_5utils_13ctle_checksum_3tleline_checksum_valid, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_12ssogenerator_5utils_13ctle_checksum_3tleline_checksum_valid(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_line = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("tleline_checksum_valid (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_line,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 12, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 12, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "tleline_checksum_valid", 0) < (0)) __PYX_ERR(0, 12, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("tleline_checksum_valid", 1, 1, 1, i); __PYX_ERR(0, 12, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 12, __pyx_L3_error)
+    }
+    __pyx_v_line = ((PyObject*)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("tleline_checksum_valid", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 12, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("ssogenerator.utils.ctle_checksum.tleline_checksum_valid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_line), (&PyUnicode_Type), 0, "line", 2))) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_r = __pyx_pf_12ssogenerator_5utils_13ctle_checksum_2tleline_checksum_valid(__pyx_self, __pyx_v_line);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_12ssogenerator_5utils_13ctle_checksum_2tleline_checksum_valid(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  char const *__pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("tleline_checksum_valid", 0);
+
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":13
+ * 
+ * def tleline_checksum_valid(line: str) -> bool:
+ *     if len(line) < 69:             # <<<<<<<<<<<<<<
+ *         return False
+ *     return bool(tle_checksum_valid(line.encode("ascii")))
+*/
+  __pyx_t_1 = __Pyx_PyUnicode_GET_LENGTH(__pyx_v_line); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_t_1 < 69);
+  if (__pyx_t_2) {
+
+    /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":14
+ * def tleline_checksum_valid(line: str) -> bool:
+ *     if len(line) < 69:
+ *         return False             # <<<<<<<<<<<<<<
+ *     return bool(tle_checksum_valid(line.encode("ascii")))
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(Py_False);
+    __pyx_r = Py_False;
+    goto __pyx_L0;
+
+    /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":13
+ * 
+ * def tleline_checksum_valid(line: str) -> bool:
+ *     if len(line) < 69:             # <<<<<<<<<<<<<<
+ *         return False
+ *     return bool(tle_checksum_valid(line.encode("ascii")))
+*/
+  }
+
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":15
+ *     if len(line) < 69:
+ *         return False
+ *     return bool(tle_checksum_valid(line.encode("ascii")))             # <<<<<<<<<<<<<<
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = PyUnicode_AsASCIIString(__pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyBytes_AsString(__pyx_t_3); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = tle_checksum_valid(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
+  goto __pyx_L0;
+
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":12
+ *     return tle_compute_checksum(line.encode("ascii"))
+ * 
+ * def tleline_checksum_valid(line: str) -> bool:             # <<<<<<<<<<<<<<
+ *     if len(line) < 69:
+ *         return False
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("ssogenerator.utils.ctle_checksum.tleline_checksum_valid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3030,7 +2765,6 @@ static PyObject *__pyx_pf_12ssogenerator_5utils_9cchecksum_tle_line_checksum(CYT
 /* #### Code section: module_exttypes ### */
 
 static PyMethodDef __pyx_methods[] = {
-  {"tle_line_checksum", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_12ssogenerator_5utils_9cchecksum_1tle_line_checksum, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 /* #### Code section: initfunc_declarations ### */
@@ -3113,10 +2847,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_cchecksum(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_ctle_checksum(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_cchecksum},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_ctle_checksum},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, Py_MOD_GIL_USED},
   #endif
@@ -3135,7 +2869,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "cchecksum",
+      "ctle_checksum",
       0, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
@@ -3173,8 +2907,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit_cchecksum(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_cchecksum(void)
+__Pyx_PyMODINIT_FUNC PyInit_ctle_checksum(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_ctle_checksum(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -3281,7 +3015,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_cchecksum(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_ctle_checksum(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -3291,6 +3025,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_cchecksum(PyObject *__pyx_pyinit_m
   __pyx_mstatetype *__pyx_mstate = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3298,7 +3033,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_cchecksum(PyObject *__pyx_pyinit_m
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'cchecksum' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'ctle_checksum' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -3314,7 +3049,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_cchecksum(PyObject *__pyx_pyinit_m
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "cchecksum" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "ctle_checksum" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -3342,7 +3077,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_cchecksum(PyObject *__pyx_pyinit_m
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit_cchecksum", 0);
+__Pyx_RefNannySetupContext("PyInit_ctle_checksum", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -3353,13 +3088,13 @@ __Pyx_RefNannySetupContext("PyInit_cchecksum", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_ssogenerator__utils__cchecksum) {
+  if (__pyx_module_is_main_ssogenerator__utils__ctle_checksum) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ssogenerator.utils.cchecksum")) {
-      if (unlikely((PyDict_SetItemString(modules, "ssogenerator.utils.cchecksum", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ssogenerator.utils.ctle_checksum")) {
+      if (unlikely((PyDict_SetItemString(modules, "ssogenerator.utils.ctle_checksum", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -3377,25 +3112,52 @@ __Pyx_RefNannySetupContext("PyInit_cchecksum", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "ssogenerator/utils/cchecksum_wrapper.pyx":8
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":7
+ *     bint tle_checksum_valid(const char *line)
  * 
- * # Python wrapper
- * def tle_line_checksum(str line):             # <<<<<<<<<<<<<<
- * 
- *     # Convert Python str --> bytes as TLE lines are ASCII
+ * def tleline_checksum(line: str) -> int:             # <<<<<<<<<<<<<<
+ *     if len(line) < 69:
+ *         raise ValueError("TLE line must be at least 69 characters long")
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_12ssogenerator_5utils_9cchecksum_1tle_line_checksum, 0, __pyx_mstate_global->__pyx_n_u_tle_line_checksum, NULL, __pyx_mstate_global->__pyx_n_u_ssogenerator_utils_cchecksum, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_line, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_12ssogenerator_5utils_13ctle_checksum_1tleline_checksum, 0, __pyx_mstate_global->__pyx_n_u_tleline_checksum, NULL, __pyx_mstate_global->__pyx_n_u_ssogenerator_utils_ctle_checksum, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
+  #endif
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_2);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_tleline_checksum, __pyx_t_3) < (0)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":12
+ *     return tle_compute_checksum(line.encode("ascii"))
+ * 
+ * def tleline_checksum_valid(line: str) -> bool:             # <<<<<<<<<<<<<<
+ *     if len(line) < 69:
+ *         return False
+*/
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_line, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_bool) < (0)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_12ssogenerator_5utils_13ctle_checksum_3tleline_checksum_valid, 0, __pyx_mstate_global->__pyx_n_u_tleline_checksum_valid, NULL, __pyx_mstate_global->__pyx_n_u_ssogenerator_utils_ctle_checksum, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_tle_line_checksum, __pyx_t_2) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_3);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_tleline_checksum_valid, __pyx_t_2) < (0)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "ssogenerator/utils/cchecksum_wrapper.pyx":1
+  /* "ssogenerator/utils/ctle_checksum_wrapper.pyx":1
  * # distutils: language = c++             # <<<<<<<<<<<<<<
  * 
- * from libcpp.string cimport string
+ * cdef extern from "ctle_checksum.h":
 */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3407,9 +3169,10 @@ __Pyx_RefNannySetupContext("PyInit_cchecksum", 0);
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init ssogenerator.utils.cchecksum", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ssogenerator.utils.ctle_checksum", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -3423,7 +3186,7 @@ __Pyx_RefNannySetupContext("PyInit_cchecksum", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ssogenerator.utils.cchecksum");
+    PyErr_SetString(PyExc_ImportError, "init ssogenerator.utils.ctle_checksum");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3462,42 +3225,42 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 8; } index[] = {{1},{179},{8},{40},{20},{18},{5},{18},{8},{13},{5},{4},{8},{10},{8},{3},{12},{12},{10},{28},{8},{17},{6},{19}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (325 bytes) */
-const char* const cstring = "(\265/\375`\314\000\335\t\000&\026C&\220M\007\377\330\272\273\373\373\317\262\321\276L\221d+A\004\002\3754\231\344x\341\nr\302\376\336c~\315\250M\333\0028\0005\0009\000\326\365\331\355]\213\230\314\274tv_\3070\321\323\2371\207aV\275\271`,\022\225H%\033\362\263\006\337\363r\374\013\031\323\034W\351-\373m\376z\344\357\346\223\377Q\032\001\357\027r\263\346\271\363\277\326\252Z\212\335\255$\337'\203\3323\206\255J\204\246\233u\275\366k\277\377\272\027\221\317\236\315\233\367\265\362}V\314\235\361]\231\231$\345\034\312:fT;l1\314\026\276vS\356\346\230s\267\217\017>F\275\306\372\362\315\360\345EL\321g\r\"\272*\252\242\313\242 [\326\302\220z\242w\030o\030S\270k\037\0250\026\222\203t \224\010\002S\200d\030\000\n\247\300\3109\272\005)\273W}\347W\212z\0277\303\325\263\253\272\215\037U\353Y\252\354\331f\027\253\247\332m=\352\036\376\246\336T\003\021\000<\004\\|\035,\203V\024\r\233\333\200O\241\311\234\332\022\274\025\330N]\035T5\206r\221n\007\221%\340\202\252;B\201\322\003";
-    PyObject *data = __Pyx_DecompressString(cstring, 325, 3);
+    const struct { const unsigned int length: 8; } index[] = {{1},{179},{44},{8},{44},{20},{18},{4},{18},{8},{3},{13},{5},{4},{8},{10},{8},{3},{12},{6},{12},{10},{32},{3},{8},{16},{22},{6},{45},{45}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (430 bytes) */
+const char* const cstring = "(\265/\375`g\001%\r\000\326\035\\/pm:D\377\377\353\302o{\342\367\200\253E2\245$[R\205B\272\221\264\345\024 \326x\214\003\360}\326q\357#\240\n\373'YP9\177\014J\000K\000K\000\371\354\331\254y_*\337\347\304\334\031_\225\230\215\214\234\251\352\263\333\273\026\245\304\274tv_\307\244\350\351\317\030\204aN\275i\221\260<\\0.\331\220\2375\370\236\225\343_\310Rs<\245\267\354\247\371\312\"\1775\237\374\257\203\"!\2145L\331=\203p\327>B\300\367\013\2719\363\334\371_\3534m\246\237K\207\374l\341jXND\344\373\262\313\337d)\337\343&\271\233K\014\216\217\210\335mF\276O\026i\317\030\266)\0352\335\250\352\265_\373\375\327\275\016\001\320m\344\250R\217R\345\3156\2738=\325n\273Q\337\3607\365\246\337M\225u\304\250\206\260\225\230-|\355\246\334\3151\367\236\344\334\355\343\203\217E\257\261\256|1\354\361\035\356\320g\355\242S]T;\025\025A\246\250\205#\272\211\036\234\317~F.\313E\271\032\016@\034\313bq,\003\204\217\302E\001\000U|*\037\215krq<\014\004 \202I\010\301\023\340\001\261\n\006B\225\222\204\222\010\213b9\211\300$T\271$<\013\000 \34785\267\"\332\315\261{\325w~U\370\036E\357\342bxzv\325\206\3619\023 P\306 \353\030,0\016\252\203\020\250\t\002\275\333\372\256.\026M^\333@0<yj\017\336\206\035]\035\344\026\247\261\200x\020\013\352\242P\260\313";
+    PyObject *data = __Pyx_DecompressString(cstring, 430, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (370 bytes) */
-const char* const cstring = "BZh91AY&SYW,\375\317\000\000\032\377\342\346\014\000$@\203\204@\257!p\000\277\377\377\340@\000\000@@@@\0000\001-A\021\023\004\302\207\244zM4\3104\006\203M\r=2\206\000\001\240\0002h\000\0004\003S\010\020\311\240L\243@h\320\006\200\332\232\033X\236\370\032\022\305K\345\205\356\276\213p\240\277\210\216\345\211A\354a$9\325uv\241\003Z\202A\357\353\247\236\332\251Y\216\215\336\010\201\330\033\013\221\200D\314.\034>\325\007\022\343\003\305\246DI\241\260\022\007\237\345d\252\350 Xh\334\246\342\033\316V\214\t3\001\352^oO\240\034b$N\001\3514\252\n\036[!m\203u\311\225\230gY\002\007G\2611\326i\255\246\323\260?x=2x\230CQ\232\263[\365\230\322\n \313\230B\375nAag\027\000\202p;\363t\224\232\031\024J5\242\255\001\023\315\306\032\214\340\252\226\243\230rs\337\276\017\002\302\210 \227>Ay\2371\232\334\341A\034\212X\013\353\202\211Oi\320<Y\311\031:\225\241\025(c\020\246h\035\214pQc#\000\366v\261P\213v/I\0216MJ\342\0056\013HA\356p@u+\232Ybp5T\244\242\262{\022\016k\032\023d\352\266\316\021-&\306\021\367\020\376.\344\212p\241 \256Y\373\236";
-    PyObject *data = __Pyx_DecompressString(cstring, 370, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (496 bytes) */
+const char* const cstring = "BZh91AY&SY\324$\203\267\000\000-\377\362d\311\360H\360\203\245`\257\245T\000\277\377\377\340@@@@@@@@0\001\206\246K\rU?h5S\364\nmG\250d\320d`M\036\240\033H\315C\3234j\rMM\243S\020S\332I\206\243F\203@i\200CM\001\241\246\203S&\211\351\t\264\246OOSS\020\032\000\000\001\240\017$\\4\007<\013\214\020Y\006\202{\036\r\261{\324)\354\247\032\327\257-X\315z\224{\312\035\207j\205f\324\223\031\023\304\274\275\333\263Q\014<\205 B06\370\237T\212\204\205\3743\331\003:h\2250#\363Gfth\315\266`\365\033\010\206{~\376\014\\H[\n`eS&\221n\033\030\361p\233\350\261&\334\264\221\361W\315\241\251\275h\275\245F\311P\025\332\310\303\0351F\342\230\004\244\300\230H\274\r\017\177\262\032\224\235]\003\222\030pA\366F)&\021\202\005j\201e\365\276\375cq\250\244.Pv\305Cj\010\326\211#'\277\025\361\026\300 \206\022\004\001\010\3359\264RY \214\r\024.U\306\351\316e\211\252T\360`B\r\202\352XC;\302BI\031 z\325\230\3144\336h)%\245.wk\221A\344\360A\307\031N\200VKH\226\353'\271i\302\"k\205\301X\206\005A\032\363l\267\232B\3018\210]H\314X \371({\342n\306b\300\3436\210@I\242\226,\307A\272fh\001\337\301\312\322#\340\310\222J\310\237\027\206\325@\030\352\025\220Y\231\031\220\030\231d\304\203X\377\004\r\262\373\314\0146\247\263\014\004\316\214\235\365\212\251\305Dh\037\307\313\352\032(\260~\374\377}\n\207\247\375vb\201\333\213|N}\323\346\231\374\361\261\344\202\034\005\334\221N\024$5\t \355\300";
+    PyObject *data = __Pyx_DecompressString(cstring, 496, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (315 bytes) */
-const char* const cstring = "x\332MO\273N\0031\020$\022T\341\007\220(\266K\305\245IA\207\020\017\211&:\370\201\225\317\267\2273\361\331\207w\035r\035\237\221\317\242\3443\370\004\366\302+.\306c\355\214g\347j\031\205@Z#p3H\033\0038\206\232\274\253(\031!?\000KrV(\215\242\000\345]y\261\270\\\200\t5$z&+\014\234+\353\r31\304\006\252\354\274\270\0002\364\304\005<40\304\014\201\250\006\211\320\253\356\320 -\005`\222\221\300\314\204\020\305\210\213\001\325\356\302j\006\265K\032\34264\272\357\215g*L]\243\352\2109\256(\214{\3064\317\342<\317\255m\311\2569w\370\232L\337S*\372a\213X*\224\303\255\366\300%m\345\211\032\303C\260.\0266\246\250\326@l\275\342\036\320i|2\226*c\327\210M\016\026\021\035\343\237\330\tu\274\227bgT\255\247\213u\3664\262`:\275\373\330#\276d\343\277\237\210Z\362g\244\254\326\r\262\227\303\006\305\276A\361\337\000\265\241(\352\257\373\250\337\301\306\370L\3746\371<=:9\333M>\216\247\357\323\363\335\365\356\361\013\244X\261 ";
-    PyObject *data = __Pyx_DecompressString(cstring, 315, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (427 bytes) */
+const char* const cstring = "x\332]Q\261n\0241\020\r\322I E\002B\205D\301\034M*6:\351\024\205\n!\010Q$\024\235\020\275\345\365\316\335:\361\332\273\236q\222\355(\267Ly\345\226\3739W\336\3470{@\224d\212\361\214\375\236\347=\373\363E`\004.5\303\327\226\313\340\301\022\024\350l\216Q3\272\026\210\2435\214q\004yX\234.>\316O\346\240}\001\021/\3210\001\245\3348M\204\004a\ty\262\216\255\007nk\244\014\316\227\320\206\004\036\261\000\016P\013\356!\201K\364@\310c\001\207\332\373\300\232m\360J\350\326\257\016\241\260Q\206\330k\034\331\337\265#\314~\3758\005g=B\225\210!G\020\361\016\265\324\307\237\300\224:\352Q/\201\013~\245\213B\311\235H\024V\350GO!\036%\266\216\216\014;T\246DsE\251R7Q\3275\306\254no\225ZHZ\264\337\304\267\272\300[\376\211KM\25576d&\304 t\217\224\207\340\314(CYQ+31\327\346J\251e\362F\311\036+K\352\036n\031+\332\241U\245\205 Q\205\"\211\002\t\257+Y\353P+\325$\355\376\266\0219E\001\312\343\374\003HU\210\222\344\370\241\233l\347&{\344F\376L)1\315\222\035\356\306\376?z\332\253k\355l!)!m\366\336\255O\372\331v\362\3747u\323\356\370\356\315\335l\373\342ew\271~\266>\330N\3667\373\357\327M?\351\317\206\331\360e\2637\355\337\016\007O\300\257\272F\200\335\274k6\257?\364\323~\336\337\014zh\376\000\342\374\355M";
+    PyObject *data = __Pyx_DecompressString(cstring, 427, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (460 bytes) */
-const char* const bytes = "?Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.add_notessogenerator/utils/cchecksum_wrapper.pyx__Pyx_PyDict_NextRefasyncio.coroutinesclinecline_in_traceback__func___is_coroutineitemsline__main____module____name__pop__qualname____set_name__setdefaultssogenerator.utils.cchecksum__test__tle_line_checksumvalues\200\001\360\014\000\005\031\230\001\330\004\013\320\013\034\230A\230Q";
+    #else /* compression: none (615 bytes) */
+const char* const bytes = "?Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.TLE line must be at least 69 characters longadd_notessogenerator/utils/ctle_checksum_wrapper.pyx__Pyx_PyDict_NextRefasyncio.coroutinesboolcline_in_traceback__func__int_is_coroutineitemsline__main____module____name__pop__qualname__return__set_name__setdefaultssogenerator.utils.ctle_checksumstr__test__tleline_checksumtleline_checksum_validvalues\320\000\033\2308\2401\330\004\007\200s\210!\2106\220\022\2201\330\010\016\210j\230\001\230\021\330\004\013\320\013\037\230q\240\004\240G\2501\250A\320\000!\240\030\250\021\330\004\007\200s\210!\2106\220\022\2201\330\010\017\210q\330\004\013\2104\210q\320\020\"\240!\2404\240w\250a\250q";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 23; i++) {
+    for (int i = 0; i < 28; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
-      if (likely(string) && i >= 4) PyUnicode_InternInPlace(&string);
+      if (likely(string) && i >= 5) PyUnicode_InternInPlace(&string);
       if (unlikely(!string)) {
         Py_XDECREF(data);
         __PYX_ERR(0, 1, __pyx_L1_error)
@@ -3505,7 +3268,7 @@ const char* const bytes = "?Note that Cython is deliberately stricter than PEP-4
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 23; i < 24; i++) {
+    for (int i = 28; i < 30; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -3516,15 +3279,15 @@ const char* const bytes = "?Note that Cython is deliberately stricter than PEP-4
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 24; i++) {
+    for (Py_ssize_t i = 0; i < 30; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 23;
-      for (Py_ssize_t i=0; i<1; ++i) {
+      PyObject **table = stringtab + 28;
+      for (Py_ssize_t i=0; i<2; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
         #else
@@ -3543,7 +3306,7 @@ typedef struct {
     unsigned int argcount : 1;
     unsigned int num_posonly_args : 1;
     unsigned int num_kwonly_args : 1;
-    unsigned int nlocals : 2;
+    unsigned int nlocals : 1;
     unsigned int flags : 10;
     unsigned int first_line : 4;
 } __Pyx_PyCode_New_function_description;
@@ -3562,9 +3325,14 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 8};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line, __pyx_mstate->__pyx_n_u_cline};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ssogenerator_utils_cchecksum_wra, __pyx_mstate->__pyx_n_u_tle_line_checksum, __pyx_mstate->__pyx_kp_b_iso88591_AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 7};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line};
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ssogenerator_utils_ctle_checksum_2, __pyx_mstate->__pyx_n_u_tleline_checksum, __pyx_mstate->__pyx_kp_b_iso88591_81_s_6_1_j_q_G1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 12};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_line};
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ssogenerator_utils_ctle_checksum_2, __pyx_mstate->__pyx_n_u_tleline_checksum_valid, __pyx_mstate->__pyx_kp_b_iso88591_s_6_1_q_4q_4waq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -4730,48 +4498,7 @@ static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *nam
     return 0;
 }
 
-/* PyErrExceptionMatches (used by PyObjectGetAttrStrNoError) */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
-    Py_ssize_t i, n;
-    n = PyTuple_GET_SIZE(tuple);
-    for (i=0; i<n; i++) {
-        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
-    }
-    for (i=0; i<n; i++) {
-        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
-    }
-    return 0;
-}
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
-    int result;
-    PyObject *exc_type;
-#if PY_VERSION_HEX >= 0x030C00A6
-    PyObject *current_exception = tstate->current_exception;
-    if (unlikely(!current_exception)) return 0;
-    exc_type = (PyObject*) Py_TYPE(current_exception);
-    if (exc_type == err) return 1;
-#else
-    exc_type = tstate->curexc_type;
-    if (exc_type == err) return 1;
-    if (unlikely(!exc_type)) return 0;
-#endif
-    #if CYTHON_AVOID_BORROWED_REFS
-    Py_INCREF(exc_type);
-    #endif
-    if (unlikely(PyTuple_Check(err))) {
-        result = __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
-    } else {
-        result = __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
-    }
-    #if CYTHON_AVOID_BORROWED_REFS
-    Py_DECREF(exc_type);
-    #endif
-    return result;
-}
-#endif
-
-/* PyErrFetchRestore (used by PyObjectGetAttrStrNoError) */
+/* PyErrFetchRestore (used by RaiseException) */
 #if CYTHON_FAST_THREAD_STATE
 static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
 #if PY_VERSION_HEX >= 0x030C00A6
@@ -4830,105 +4557,152 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 }
 #endif
 
-/* PyObjectGetAttrStrNoError (used by GetBuiltinName) */
-#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
-static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    if (likely(__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
-        __Pyx_PyErr_Clear();
-}
-#endif
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name) {
-    PyObject *result;
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-    (void) PyObject_GetOptionalAttr(obj, attr_name, &result);
-    return result;
+/* RaiseException */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
+    PyObject* owned_instance = NULL;
+    if (tb == Py_None) {
+        tb = 0;
+    } else if (tb && !PyTraceBack_Check(tb)) {
+        PyErr_SetString(PyExc_TypeError,
+            "raise: arg 3 must be a traceback or None");
+        goto bad;
+    }
+    if (value == Py_None)
+        value = 0;
+    if (PyExceptionInstance_Check(type)) {
+        if (value) {
+            PyErr_SetString(PyExc_TypeError,
+                "instance exception may not have a separate value");
+            goto bad;
+        }
+        value = type;
+        type = (PyObject*) Py_TYPE(value);
+    } else if (PyExceptionClass_Check(type)) {
+        PyObject *instance_class = NULL;
+        if (value && PyExceptionInstance_Check(value)) {
+            instance_class = (PyObject*) Py_TYPE(value);
+            if (instance_class != type) {
+                int is_subclass = PyObject_IsSubclass(instance_class, type);
+                if (!is_subclass) {
+                    instance_class = NULL;
+                } else if (unlikely(is_subclass == -1)) {
+                    goto bad;
+                } else {
+                    type = instance_class;
+                }
+            }
+        }
+        if (!instance_class) {
+            PyObject *args;
+            if (!value)
+                args = PyTuple_New(0);
+            else if (PyTuple_Check(value)) {
+                Py_INCREF(value);
+                args = value;
+            } else
+                args = PyTuple_Pack(1, value);
+            if (!args)
+                goto bad;
+            owned_instance = PyObject_Call(type, args, NULL);
+            Py_DECREF(args);
+            if (!owned_instance)
+                goto bad;
+            value = owned_instance;
+            if (!PyExceptionInstance_Check(value)) {
+                PyErr_Format(PyExc_TypeError,
+                             "calling %R should have returned an instance of "
+                             "BaseException, not %R",
+                             type, Py_TYPE(value));
+                goto bad;
+            }
+        }
+    } else {
+        PyErr_SetString(PyExc_TypeError,
+            "raise: exception class must be a subclass of BaseException");
+        goto bad;
+    }
+    if (cause) {
+        PyObject *fixed_cause;
+        if (cause == Py_None) {
+            fixed_cause = NULL;
+        } else if (PyExceptionClass_Check(cause)) {
+            fixed_cause = PyObject_CallObject(cause, NULL);
+            if (fixed_cause == NULL)
+                goto bad;
+        } else if (PyExceptionInstance_Check(cause)) {
+            fixed_cause = cause;
+            Py_INCREF(fixed_cause);
+        } else {
+            PyErr_SetString(PyExc_TypeError,
+                            "exception causes must derive from "
+                            "BaseException");
+            goto bad;
+        }
+        PyException_SetCause(value, fixed_cause);
+    }
+    PyErr_SetObject(type, value);
+    if (tb) {
+#if PY_VERSION_HEX >= 0x030C00A6
+        PyException_SetTraceback(value, tb);
+#elif CYTHON_FAST_THREAD_STATE
+        PyThreadState *tstate = __Pyx_PyThreadState_Current;
+        PyObject* tmp_tb = tstate->curexc_traceback;
+        if (tb != tmp_tb) {
+            Py_INCREF(tb);
+            tstate->curexc_traceback = tb;
+            Py_XDECREF(tmp_tb);
+        }
 #else
-#if CYTHON_COMPILING_IN_CPYTHON && CYTHON_USE_TYPE_SLOTS
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_getattro == PyObject_GenericGetAttr)) {
-        return _PyObject_GenericGetAttrWithDict(obj, attr_name, NULL, 1);
-    }
+        PyObject *tmp_type, *tmp_value, *tmp_tb;
+        PyErr_Fetch(&tmp_type, &tmp_value, &tmp_tb);
+        Py_INCREF(tb);
+        PyErr_Restore(tmp_type, tmp_value, tb);
+        Py_XDECREF(tmp_tb);
 #endif
-    result = __Pyx_PyObject_GetAttrStr(obj, attr_name);
-    if (unlikely(!result)) {
-        __Pyx_PyObject_GetAttrStr_ClearAttributeError();
     }
-    return result;
-#endif
+bad:
+    Py_XDECREF(owned_instance);
+    return;
 }
 
-/* GetBuiltinName (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStrNoError(__pyx_mstate_global->__pyx_b, name);
-    if (unlikely(!result) && !PyErr_Occurred()) {
-        PyErr_Format(PyExc_NameError,
-            "name '%U' is not defined", name);
+/* pybuiltin_invalid (used by pyint_simplify) */
+static void __Pyx_PyBuiltin_Invalid(PyObject *obj, const char *type_name, const char *argname) {
+    __Pyx_TypeName obj_type_name = __Pyx_PyType_GetFullyQualifiedName(Py_TYPE(obj));
+    if (argname) {
+        PyErr_Format(PyExc_TypeError,
+            "Argument '%.200s' has incorrect type (expected %.200s, got " __Pyx_FMT_TYPENAME ")",
+            argname, type_name, obj_type_name
+        );
+    } else {
+        PyErr_Format(PyExc_TypeError,
+            "Expected %.200s, got " __Pyx_FMT_TYPENAME,
+            type_name, obj_type_name
+        );
     }
-    return result;
+    __Pyx_DECREF_TypeName(obj_type_name);
 }
 
-/* PyDictVersioning (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
-    }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+/* pyint_simplify */
+static CYTHON_INLINE int __Pyx_PyInt_FromNumber(PyObject **number_var, const char *argname, int accept_none) {
+    PyObject *number = *number_var;
+    if (likely((accept_none && number == Py_None) || PyLong_CheckExact(number))) {
         return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
-}
-#endif
-
-/* GetModuleGlobalName */
-#if CYTHON_USE_DICT_VERSIONS
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
-#else
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
-#endif
-{
-    PyObject *result;
-#if CYTHON_COMPILING_IN_LIMITED_API
-    if (unlikely(!__pyx_m)) {
-        if (!PyErr_Occurred())
-            PyErr_SetNone(PyExc_NameError);
-        return NULL;
     }
-    result = PyObject_GetAttr(__pyx_m, name);
-    if (likely(result)) {
-        return result;
+    PyObject *int_object;
+    if (likely(PyNumber_Check(number))) {
+        int_object = PyNumber_Long(number);
+        if (unlikely(!int_object)) goto bad;
+    } else {
+        __Pyx_PyBuiltin_Invalid(number, "int", argname);
+        goto bad;
     }
-    PyErr_Clear();
-#elif CYTHON_AVOID_BORROWED_REFS || CYTHON_AVOID_THREAD_UNSAFE_BORROWED_REFS
-    if (unlikely(__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, name, &result) == -1)) PyErr_Clear();
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return result;
-    }
-#else
-    result = _PyDict_GetItem_KnownHash(__pyx_mstate_global->__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    }
-    PyErr_Clear();
-#endif
-    return __Pyx_GetBuiltinName(name);
+    *number_var = int_object;
+    Py_DECREF(number);
+    return 0;
+bad:
+    *number_var = NULL;
+    Py_DECREF(number);
+    return -1;
 }
 
 /* dict_setdefault (used by FetchCommonType) */
@@ -6470,6 +6244,102 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qual
     return op;
 }
 
+/* PyDictVersioning (used by CLineInTraceback) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* PyErrExceptionMatches (used by PyObjectGetAttrStrNoError) */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    int result;
+    PyObject *exc_type;
+#if PY_VERSION_HEX >= 0x030C00A6
+    PyObject *current_exception = tstate->current_exception;
+    if (unlikely(!current_exception)) return 0;
+    exc_type = (PyObject*) Py_TYPE(current_exception);
+    if (exc_type == err) return 1;
+#else
+    exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+#endif
+    #if CYTHON_AVOID_BORROWED_REFS
+    Py_INCREF(exc_type);
+    #endif
+    if (unlikely(PyTuple_Check(err))) {
+        result = __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    } else {
+        result = __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+    }
+    #if CYTHON_AVOID_BORROWED_REFS
+    Py_DECREF(exc_type);
+    #endif
+    return result;
+}
+#endif
+
+/* PyObjectGetAttrStrNoError (used by CLineInTraceback) */
+#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
+static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (likely(__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        __Pyx_PyErr_Clear();
+}
+#endif
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name) {
+    PyObject *result;
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+    (void) PyObject_GetOptionalAttr(obj, attr_name, &result);
+    return result;
+#else
+#if CYTHON_COMPILING_IN_CPYTHON && CYTHON_USE_TYPE_SLOTS
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_getattro == PyObject_GenericGetAttr)) {
+        return _PyObject_GenericGetAttrWithDict(obj, attr_name, NULL, 1);
+    }
+#endif
+    result = __Pyx_PyObject_GetAttrStr(obj, attr_name);
+    if (unlikely(!result)) {
+        __Pyx_PyObject_GetAttrStr_ClearAttributeError();
+    }
+    return result;
+#endif
+}
+
 /* CLineInTraceback (used by AddTraceback) */
 #if CYTHON_CLINE_IN_TRACEBACK && CYTHON_CLINE_IN_TRACEBACK_RUNTIME
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030A0000
@@ -6764,6 +6634,107 @@ bad:
 }
 #endif
 
+/* PyObjectVectorCallKwBuilder (used by CIntToPy) */
+#if CYTHON_VECTORCALL
+static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_PyObject_FastCallDict;
+    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
+    Py_INCREF(key);
+    args[n] = value;
+    return 0;
+}
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_VectorcallBuilder_AddArgStr;
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
+}
+static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    PyObject *pyKey = PyUnicode_FromString(key);
+    if (!pyKey) return -1;
+    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
+}
+#else // CYTHON_VECTORCALL
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return PyDict_SetItem(builder, key, value);
+}
+#endif
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const int neg_one = (int) -1, const_zero = (int) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyLong_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#if !CYTHON_COMPILING_IN_PYPY
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyLong_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL, *kwds = NULL;
+        PyObject *py_bytes = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        {
+            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
+            if (!is_unsigned) {
+                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
+                if (!kwds) goto limited_bad;
+                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
+            }
+            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
+        }
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
 /* FormatTypeName */
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
 static __Pyx_TypeName
@@ -6800,38 +6771,6 @@ __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp)
         result = __Pyx_NewRef(__pyx_mstate_global->__pyx_kp_u_);
     }
     goto done;
-}
-#endif
-
-/* PyObjectVectorCallKwBuilder (used by CIntToPy) */
-#if CYTHON_VECTORCALL
-static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_PyObject_FastCallDict;
-    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
-    Py_INCREF(key);
-    args[n] = value;
-    return 0;
-}
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_VectorcallBuilder_AddArgStr;
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
-}
-static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    PyObject *pyKey = PyUnicode_FromString(key);
-    if (!pyKey) return -1;
-    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
-}
-#else // CYTHON_VECTORCALL
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return PyDict_SetItem(builder, key, value);
 }
 #endif
 

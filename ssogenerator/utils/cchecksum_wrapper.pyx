@@ -6,8 +6,12 @@ cdef extern from "cchecksum.h":
 
 # Python wrapper
 def tle_line_checksum(str line):
-    cdef string cline
-    cline = line
+
+    # Convert Python str --> bytes as TLE lines are ASCII
+    #if isinstance(line, str):
+    #    line = line.encode("ascii")
+    
+    cdef string cline = line
     return tle_line_checksum(cline)
 
 # AI Claude suggestion:

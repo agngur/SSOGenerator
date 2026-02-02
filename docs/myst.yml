@@ -7,22 +7,25 @@ project:
   keywords: 
     - satellites
     - orbital mechanics
+    - visualisation
   authors:
     - name: Agnieszka Gurgul
       affiliation:
         - id: UMK
         - institution: Nicolaus Copernicus University in Torun
       email: agn.gurgul@umk.pl
-      orcid: 0000-0000-0000-0000
+      orcid: 0000-0002-9441-0195
 
   github: https://github.com/agngur/SSOGenerator
   copyright: "2025"
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
-    - file: install.md
-    - file: ../changelog.md
     - file: ../readme.md
-    - file: ../tests/test_notebook.ipynb
+    - file: getting_started.md
+    - file: api/visualization.md
+    - file: troubleshooting.md
+    - file: ../changelog.md
+  #  - file: ../tests/test_notebook.ipynb
   bibliography:
     - references.bib
 
@@ -32,4 +35,4 @@ site:
   options:
      favicon: ai_iaumk.png
      logo: ai_iaumk.png
-     logo_text: JB-docs for SSOgenerator
+     logo_text: JB-docs for Satellite System Object Generator

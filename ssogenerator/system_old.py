@@ -1,11 +1,9 @@
-import numpy as np
-from typing import List, Optional
-from datetime import datetime
-
-from ssogenerator.utils.ephemeris import TLE, get_latest_tle
 from .satellite import Satellite
 from .earth import Earth
-
+from ssogenerator.utils.ephemeris import TLE, get_latest_tle
+import numpy as np
+from typing import List, Dict, Tuple, Optional
+from datetime import datetime, timedelta
 
 class SatelliteSystem:
     """Implements a SatelliteSystem class which consists of one central body - an Earth - and a collection of - at least one - (artificial) satellites.
@@ -18,6 +16,7 @@ class SatelliteSystem:
     Instance variables
         - earth: The Earth.
         - satellites: The list of Satellites.
+
     """
 
     def __init__(self, earth: Earth):
@@ -152,32 +151,11 @@ class SatelliteSystem:
                   f"{app['distance_km']:.2f} km at {app['time']}")
         
         return approaches
+
     
-    def visualize(self, mode: str = 'animate', **kwargs):
-        """
-        Visualize the satellite system using VPython
-        
-        :param mode:
-            Visualization mode: 'animate', 'static', or 'snapshot'
-        :param kwargs:
-            Additional arguments for visualization
-            
-        Example:
-            >>> system.visualize(mode='animate', fps=30, speed_multiplier=2.0)
-            >>> system.visualize(mode='static')
-            >>> system.visualize(mode='snapshot', time_index=0)
-        """
-        try:
-            from ssogenerator.visualization import visualize_system
-            return visualize_system(self, mode=mode, **kwargs)
-        except ImportError as e:
-            print(f"Visualization not available: {e}")
-            print("Install VPython with: pip install vpython")
-            return None
 
 # ---- Example usage ---- #
 
-        
 if __name__ == "__main__":
 
     print("Initializing Satellite System (Object) Generator!")
@@ -188,20 +166,20 @@ if __name__ == "__main__":
     # Add satellites
     print("Adding satellites...")
     
-    # Three options to add satellite:
+    ## Three options to add satellite:
     # (1) add satellite directly by Satellite object
     # (2) add satellite by Norad ID (and then get TLE and construct Satellite object)
     # (3) add satellite by TLEs (if valid! from there get "name" (or random) 
     #     and construct Satellite object)
     
-    # ISS Zarya ==> 25544
-    # Hubble Space Telescope (HST) ==> 20580
-    # LEO YAM-3 ==> 48915
-    # Starlink-1094 ==> 44941
-    # GEO APPLE ==> 12545
-    # Galileo 6 (GSAT0202) ==> 40129
+    ## ISS Zarya ==> 25544
+    ## Hubble Space Telescope (HST) ==> 20580
+    ## LEO YAM-3 ==> 48915
+    ## Starlink-1094 ==> 44941
+    ## GEO APPLE ==> 12545
+    ## Galileo 6 (GSAT0202) ==> 40129
     
-    # Adding directly from TLE as a Satellite object
+    ## Adding directly from TLE as a Satellite object
     random_tle = ['APPLE',
                   '1 12545U 81057B   26032.13894835 -.00000250  00000+0  00000+0 0  9998',
                   '2 12545   7.3448 297.9013 0022532 231.2845 340.6936  1.00050650121029']
@@ -210,14 +188,14 @@ if __name__ == "__main__":
                           sat_type="geo", rcs=2.0)
     system.add_satellite(apple_sat)
     
-    # Adding from TLE...
+    ## Adding from TLE...
     iss_tle = ['ISS (ZARYA)',
                '1 25544U 98067A   26032.43601913  .00006280  00000+0  12479-3 0  9991',
                '2 25544  51.6317 251.5712 0011128  53.0689 307.1316 15.48319189550710']
     system.add_satellite_from_tle(name="ISS", tles=iss_tle, status="operational", rcs=481.801)
     
-    # Adding by norad -> then download TLE
-    sats_to_add = ["20580", "44941", "40129"]
+    ## Adding by norad -> then download TLE
+    sats_to_add = ["20580","44941","40129"]
     for sat_noradid in sats_to_add:
         system.add_satellite_by_norad_id(sat_noradid)
     
