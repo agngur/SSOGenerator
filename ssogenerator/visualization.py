@@ -180,7 +180,7 @@ class VPythonVisualizer:
                         orbit.append(vector(pos[0], pos[1], pos[2]))
                         
                         # Limit trail length
-                        if len(orbit.points) > trail_length:
+                        if orbit.npoints > trail_length:
                             orbit.points.pop(0)
                 
                 # Optional: rotate camera slowly
